@@ -252,16 +252,3 @@ Comparison	Promotion decisions
 
 
 ⸻
-
-🎯 Interview-Ready Summary
-
-“We used MLflow as a centralized control plane to track ML, LLM, and RAG experiments.
-Models, prompts, and retrieval configs were treated as first-class versioned artifacts, enabling reproducibility, cost analysis, and safe promotion decisions.”
-
-⸻
-
-🚀 What This Enables Next
-	•	Model Registry
-	•	CI/CD automation
-	•	Canary deployments
-	•	Drift monitoring
