@@ -265,12 +265,3 @@ Models, prompts, and retrieval configs were treated as first-class versioned art
 	•	CI/CD automation
 	•	Canary deployments
 	•	Drift monitoring
-
-⸻
-
-If you want, next I can:
-1️⃣ Add screenshots checklist (what to screenshot for portfolio)
-2️⃣ Add interview Q&A mapped to MLflow UI
-3️⃣ Upgrade this to remote MLflow server (S3 + DB)
-
-Just tell me the next step.
