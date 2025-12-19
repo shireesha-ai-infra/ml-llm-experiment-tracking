@@ -199,54 +199,6 @@ This enables system-level tradeoff analysis:
 Smaller chunks improve relevance but increase latency.
 
 ⸻
-
-7️⃣ Cross-Run Cost vs Quality Analysis
-
-MLflow allows sorting and filtering by metrics.
-
-Common Infra Questions Answered
-	•	Which prompt gives best quality per dollar?
-	•	Which RAG config balances latency and relevance?
-	•	Which ML model is safe to promote?
-
-This is production thinking, not experimentation.
-
-⸻
-
-8️⃣ Artifacts as Ground Truth
-
-Artifacts stored per run include:
-	•	Trained models
-	•	Prompt files
-	•	Generated responses
-
-These allow:
-	•	Full experiment replay
-	•	Rollback to previous states
-	•	Compliance and audit readiness
-
-No artifact = no trust in the experiment.
-
-⸻
-
-9️⃣ Reproducibility Guarantee
-
-Every run in MLflow captures:
-	•	Code execution context
-	•	Parameters
-	•	Metrics
-	•	Outputs
-
-Any run can be re-executed or debugged later with confidence.
-
-⸻
-
-🔑 How This Maps to Production Systems
-
-MLflow Concept	Production Equivalent
-Experiments	Projects / Pipelines
-Runs	Model builds
-Metrics	Monitoring signals
 Artifacts	Versioned assets
 Comparison	Promotion decisions
 
