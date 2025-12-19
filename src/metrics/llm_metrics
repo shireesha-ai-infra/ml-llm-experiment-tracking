@@ -1,0 +1,2 @@
+def latency_metric(start, end):
+    return end - start

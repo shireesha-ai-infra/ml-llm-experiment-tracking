@@ -1,0 +1,276 @@
+# ML & LLM Experiment Tracking System with MLflow
+
+## Overview
+This project demonstrates a production-style experiment tracking system for:
+- Classical Machine Learning
+- Neural Networks
+- Large Language Models (LLMs)
+- Retrieval-Augmented Generation (RAG)
+
+The goal is to ensure **reproducibility, comparability, and governance** across all AI experiments.
+
+---
+
+## Why This Project Matters
+In real-world AI systems, failures often come from:
+- Unknown model versions
+- Untracked prompts
+- Unmeasured latency and cost
+- Inability to reproduce results
+
+This system treats **models, prompts, and RAG configs as first-class versioned artifacts**.
+
+---
+
+## What Is Tracked
+
+### Parameters
+- ML hyperparameters
+- Prompt versions
+- RAG chunk sizes and retrievers
+
+### Metrics
+- Accuracy, loss
+- Latency
+- Tokens used
+- Cost per run
+
+### Artifacts
+- Trained models
+- Prompt files
+- Generated responses
+
+---
+
+## Tech Stack
+- MLflow (tracking + UI)
+- Scikit-learn
+- PyTorch
+- Python
+
+---
+
+## How to Run
+
+### Install dependencies
+pip install -r requirements.txt
+
+### Start MLflow UI
+mlflow ui --backend-store-uri sqlite:///mlflow.db --port 5000
+
+### Run experiments
+python experiments/ml/train_baseline.py
+python experiments/ml/train_improved.py
+python experiments/nn/train_nn.py
+python experiments/llm/run_llm_experiment.py
+python experiments/rag/run_rag_experiment.py
+
+
+🔍 Tracking & Analyzing Experiments in MLflow UI
+
+After running all experiments, open the MLflow UI:
+
+mlflow ui --backend-store-uri sqlite:///mlflow.db --port 5000
+
+Navigate to: http://127.0.0.1:5000
+
+This UI is the single source of truth for all ML, LLM, and RAG experiments in this project.
+
+⸻
+
+1️⃣ Experiment Selection (Top Left)
+
+MLflow groups runs into experiments. In this project, you will see:
+
+Experiment Name	Purpose
+ml-experiments	Classical ML models
+nn-experiments	Neural network training
+llm-experiments	Prompt-based LLM runs
+rag-experiments	RAG configuration experiments
+
+👉 Always select the correct experiment first to avoid mixing concerns.
+
+⸻
+
+2️⃣ Runs Table (Core Analysis View)
+
+Each row represents one immutable experiment run.
+
+Columns to Focus On
+
+Column	What It Means	Why It Matters
+Run Name	Logical identifier	Easy comparison
+Start Time	When run executed	Recency tracking
+Params	Hyperparameters / configs	Reproducibility
+Metrics	Performance numbers	Quality comparison
+Artifacts	Stored outputs	Audit & rollback
+
+
+⸻
+
+3️⃣ Comparing ML Models (ML Experiments)
+
+How to Compare
+	1.	Select multiple runs
+	2.	Click “Compare”
+
+What to Analyze
+
+Metric	Interpretation
+accuracy	Model quality
+Params (C, max_iter)	Why performance changed
+
+Example Insight
+
+“Increasing max_iter improved convergence but diminishing accuracy gains were observed.”
+
+This shows engineering judgment, not just metric chasing.
+
+⸻
+
+4️⃣ Neural Network Training Curves
+
+In nn-experiments:
+	•	Click a run
+	•	Open Metrics → loss
+
+What You Learn
+	•	Convergence behavior
+	•	Overfitting signals
+	•	Training stability
+
+This helps answer:
+
+“Why did you choose this architecture?”
+
+⸻
+
+5️⃣ LLM Prompt Tracking (LLMOps)
+
+In llm-experiments:
+
+Parameters to Inspect
+
+Param	Meaning
+prompt_version	Prompt iteration
+llm_model	Model used
+
+Metrics to Inspect
+
+Metric	Why It Matters
+latency_sec	User experience
+tokens_used	Cost driver
+cost_usd	Budget control
+
+Artifacts (CRITICAL)
+
+Open Artifacts:
+	•	prompt.txt
+	•	response.txt
+
+👉 This allows:
+	•	Prompt reproducibility
+	•	Offline evaluation
+	•	Auditing LLM outputs
+
+Prompts are treated as versioned infra assets, not strings in code.
+
+⸻
+
+6️⃣ RAG Configuration Tracking
+
+In rag-experiments:
+
+Parameters
+
+Param	Meaning
+chunk_size	Context granularity
+retriever	Retrieval strategy
+embedding_model	Representation choice
+
+Metrics
+
+Metric	Interpretation
+answer_relevance	Output quality
+latency_sec	System responsiveness
+
+This enables system-level tradeoff analysis:
+
+Smaller chunks improve relevance but increase latency.
+
+⸻
+
+7️⃣ Cross-Run Cost vs Quality Analysis
+
+MLflow allows sorting and filtering by metrics.
+
+Common Infra Questions Answered
+	•	Which prompt gives best quality per dollar?
+	•	Which RAG config balances latency and relevance?
+	•	Which ML model is safe to promote?
+
+This is production thinking, not experimentation.
+
+⸻
+
+8️⃣ Artifacts as Ground Truth
+
+Artifacts stored per run include:
+	•	Trained models
+	•	Prompt files
+	•	Generated responses
+
+These allow:
+	•	Full experiment replay
+	•	Rollback to previous states
+	•	Compliance and audit readiness
+
+No artifact = no trust in the experiment.
+
+⸻
+
+9️⃣ Reproducibility Guarantee
+
+Every run in MLflow captures:
+	•	Code execution context
+	•	Parameters
+	•	Metrics
+	•	Outputs
+
+Any run can be re-executed or debugged later with confidence.
+
+⸻
+
+🔑 How This Maps to Production Systems
+
+MLflow Concept	Production Equivalent
+Experiments	Projects / Pipelines
+Runs	Model builds
+Metrics	Monitoring signals
+Artifacts	Versioned assets
+Comparison	Promotion decisions
+
+
+⸻
+
+🎯 Interview-Ready Summary
+
+“We used MLflow as a centralized control plane to track ML, LLM, and RAG experiments.
+Models, prompts, and retrieval configs were treated as first-class versioned artifacts, enabling reproducibility, cost analysis, and safe promotion decisions.”
+
+⸻
+
+🚀 What This Enables Next
+	•	Model Registry
+	•	CI/CD automation
+	•	Canary deployments
+	•	Drift monitoring
+
+⸻
+
+If you want, next I can:
+1️⃣ Add screenshots checklist (what to screenshot for portfolio)
+2️⃣ Add interview Q&A mapped to MLflow UI
+3️⃣ Upgrade this to remote MLflow server (S3 + DB)
+
+Just tell me the next step.
