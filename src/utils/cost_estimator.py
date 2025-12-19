@@ -1,2 +1,7 @@
-def estimate_cost(tokens, cost_per_token=0.000002):
-    return tokens * cost_per_token
+PRICING = {"gpt-4.1-mini":0.000002}
+
+def estimate_cost(tokens: int, model: str) -> float:
+    assert isinstance(tokens, (int, float)), "tokens must be numeric"
+    assert model in PRICING, f"Unknown model: {model}"
+
+    return float(tokens) * PRICING[model]

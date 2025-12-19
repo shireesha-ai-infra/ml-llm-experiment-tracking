@@ -1,4 +1,7 @@
 from openai import OpenAI
+from dotenv import load_dotenv
+
+load_dotenv()
 
 def load_llm(model_name : str):
     client= OpenAI()
