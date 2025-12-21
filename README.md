@@ -59,142 +59,142 @@ pip install -r requirements.txt
 mlflow ui --backend-store-uri sqlite:///mlflow.db --port 5000
 
 ### Run experiments
-python experiments/ml/train_baseline.py
-python experiments/ml/train_improved.py
-python experiments/nn/train_nn.py
-python experiments/llm/run_llm_experiment.py
-python experiments/rag/run_rag_experiment.py
+- python experiments/ml/train_baseline.py
+- python experiments/ml/train_improved.py
+- python experiments/nn/train_nn.py
+- python experiments/llm/run_llm_experiment.py
+- python experiments/rag/run_rag_experiment.py
 
 
-🔍 Tracking & Analyzing Experiments in MLflow UI
+# 🔍 Tracking & Analyzing Experiments in MLflow UI
 
-After running all experiments, open the MLflow UI:
+- After running all experiments, open the MLflow UI:
 
 mlflow ui --backend-store-uri sqlite:///mlflow.db --port 5000
 
-Navigate to: http://127.0.0.1:5000
+- Navigate to: http://127.0.0.1:5000
 
 This UI is the single source of truth for all ML, LLM, and RAG experiments in this project.
 
 ⸻
 
-1️⃣ Experiment Selection (Top Left)
+## 1️⃣ Experiment Selection (Top Left)
 
 MLflow groups runs into experiments. In this project, you will see:
 
-Experiment Name	Purpose
-ml-experiments	Classical ML models
-nn-experiments	Neural network training
-llm-experiments	Prompt-based LLM runs
-rag-experiments	RAG configuration experiments
+- Experiment Name	Purpose
+- ml-experiments	Classical ML models
+- nn-experiments	Neural network training
+- llm-experiments	Prompt-based LLM runs
+- rag-experiments	RAG configuration experiments
 
 👉 Always select the correct experiment first to avoid mixing concerns.
 
 ⸻
 
-2️⃣ Runs Table (Core Analysis View)
+## 2️⃣ Runs Table (Core Analysis View)
 
 Each row represents one immutable experiment run.
 
 Columns to Focus On
 
-Column	What It Means	Why It Matters
-Run Name	Logical identifier	Easy comparison
-Start Time	When run executed	Recency tracking
-Params	Hyperparameters / configs	Reproducibility
-Metrics	Performance numbers	Quality comparison
-Artifacts	Stored outputs	Audit & rollback
+| Column      | What It Means                         | Why It Matters                          |
+|-------------|---------------------------------------|------------------------------------------|
+| Run Name    | Logical identifier for an experiment  | Enables easy comparison across runs      |
+| Start Time  | Timestamp when the run was executed   | Helps track recency and experiment order |
+| Params      | Hyperparameters and configuration     | Ensures full reproducibility             |
+| Metrics     | Quantitative performance results      | Allows objective quality comparison      |
+| Artifacts   | Stored outputs (models, prompts, logs)| Enables auditing and safe rollback       |
 
 
 ⸻
 
-3️⃣ Comparing ML Models (ML Experiments)
+## 3️⃣ Comparing ML Models (ML Experiments)
 
-How to Compare
+### How to Compare
+
 	1.	Select multiple runs
+
 	2.	Click “Compare”
 
-What to Analyze
+### What to Analyze
 
-Metric	Interpretation
-accuracy	Model quality
-Params (C, max_iter)	Why performance changed
+| Metric / Field           | Interpretation                     |
+|--------------------------|-------------------------------------|
+| Accuracy                 | Indicates overall model quality     |
+| Params (C, max_iter)     | Explains why model performance changed |
 
-Example Insight
-
-“Increasing max_iter improved convergence but diminishing accuracy gains were observed.”
-
-This shows engineering judgment, not just metric chasing.
 
 ⸻
 
-4️⃣ Neural Network Training Curves
+## 4️⃣ Neural Network Training Curves
 
-In nn-experiments:
-	•	Click a run
-	•	Open Metrics → loss
+### In nn-experiments:
+	- Click a run
+	- Open Metrics → loss
 
-What You Learn
-	•	Convergence behavior
-	•	Overfitting signals
-	•	Training stability
+### What You Learn
+	- Convergence behavior
+	- Overfitting signals
+	- Training stability
 
 This helps answer:
 
-“Why did you choose this architecture?”
+“Why did we choose this architecture?”
 
 ⸻
 
-5️⃣ LLM Prompt Tracking (LLMOps)
+## 5️⃣ LLM Prompt Tracking (LLMOps)
 
 In llm-experiments:
 
-Parameters to Inspect
+### Parameters to Inspect
 
-Param	Meaning
-prompt_version	Prompt iteration
-llm_model	Model used
+| Param          | Meaning          |
+|----------------|------------------|
+| prompt_version | Prompt iteration |
+| llm_model      | Model used       |
 
-Metrics to Inspect
+### Metrics to Inspect
 
-Metric	Why It Matters
-latency_sec	User experience
-tokens_used	Cost driver
-cost_usd	Budget control
+| Metric        | Why It Matters        |
+|---------------|------------------------|
+| latency_sec  | User experience        |
+| tokens_used  | Primary cost driver    |
+| cost_usd     | Budget control         |
 
-Artifacts (CRITICAL)
+### Artifacts 
 
 Open Artifacts:
-	•	prompt.txt
-	•	response.txt
+- prompt.txt
+- response.txt
 
 👉 This allows:
-	•	Prompt reproducibility
-	•	Offline evaluation
-	•	Auditing LLM outputs
-
-Prompts are treated as versioned infra assets, not strings in code.
+- Prompt reproducibility
+- Offline evaluation
+- Auditing LLM outputs
 
 ⸻
 
-6️⃣ RAG Configuration Tracking
+## 6️⃣ RAG Configuration Tracking
 
 In rag-experiments:
 
-Parameters
+### Parameters
 
-Param	Meaning
-chunk_size	Context granularity
-retriever	Retrieval strategy
-embedding_model	Representation choice
+| Param            | Meaning                 |
+|------------------|--------------------------|
+| chunk_size       | Context granularity      |
+| retriever        | Retrieval strategy       |
+| embedding_model  | Representation choice    |
 
-Metrics
+### Metrics
 
-Metric	Interpretation
-answer_relevance	Output quality
-latency_sec	System responsiveness
+| Metric            | Interpretation          |
+|-------------------|-------------------------|
+| answer_relevance  | Output quality          |
+| latency_sec       | System responsiveness   |
 
-This enables system-level tradeoff analysis:
 
 Smaller chunks improve relevance but increase latency.
 
