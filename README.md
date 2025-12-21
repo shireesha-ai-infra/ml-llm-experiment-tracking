@@ -1,7 +1,7 @@
 # 🚀 Project: ML & LLM Experiment Tracking System with MLflow
 
 ## Overview
-This project demonstrates a production-style experiment tracking system for:
+This project demonstrates an experiment tracking system for:
 - Classical Machine Learning
 - Neural Networks
 - Large Language Models (LLMs)
@@ -9,7 +9,6 @@ This project demonstrates a production-style experiment tracking system for:
 
 The goal is to ensure **reproducibility, comparability, and governance** across all AI experiments.
 
----
 
 ## Why This Project Matters
 In real-world AI systems, failures often come from:
@@ -18,9 +17,8 @@ In real-world AI systems, failures often come from:
 - Unmeasured latency and cost
 - Inability to reproduce results
 
-This system treats **models, prompts, and RAG configs as first-class versioned artifacts**.
+This system treats **models, prompts, and RAG configs as versioned artifacts**.
 
----
 
 ## What Is Tracked
 
@@ -40,15 +38,12 @@ This system treats **models, prompts, and RAG configs as first-class versioned a
 - Prompt files
 - Generated responses
 
----
 
 ## Tech Stack
 - MLflow (tracking + UI)
 - Scikit-learn
 - PyTorch
 - Python
-
----
 
 ## How to Run
 
@@ -76,7 +71,6 @@ mlflow ui --backend-store-uri sqlite:///mlflow.db --port 5000
 
 This UI is the single source of truth for all ML, LLM, and RAG experiments in this project.
 
-⸻
 
 ## 1️⃣ Experiment Selection (Top Left)
 
@@ -88,9 +82,6 @@ MLflow groups runs into experiments. In this project, you will see:
 - llm-experiments	Prompt-based LLM runs
 - rag-experiments	RAG configuration experiments
 
-👉 Always select the correct experiment first to avoid mixing concerns.
-
-⸻
 
 ## 2️⃣ Runs Table (Core Analysis View)
 
@@ -106,8 +97,6 @@ Columns to Focus On
 | Metrics     | Quantitative performance results      | Allows objective quality comparison      |
 | Artifacts   | Stored outputs (models, prompts, logs)| Enables auditing and safe rollback       |
 
-
-⸻
 
 ## 3️⃣ Comparing ML Models (ML Experiments)
 
@@ -142,7 +131,6 @@ This helps answer:
 
 “Why did we choose this architecture?”
 
-⸻
 
 ## 5️⃣ LLM Prompt Tracking (LLMOps)
 
@@ -174,7 +162,6 @@ Open Artifacts:
 - Offline evaluation
 - Auditing LLM outputs
 
-⸻
 
 ## 6️⃣ RAG Configuration Tracking
 
@@ -198,4 +185,3 @@ In rag-experiments:
 
 Smaller chunks improve relevance but increase latency.
 
-⸻
