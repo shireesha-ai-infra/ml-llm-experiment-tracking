@@ -74,7 +74,7 @@ This UI is the single source of truth for all ML, LLM, and RAG experiments in th
 
 ## 1️⃣ Experiment Selection (Top Left)
 
-MLflow groups runs into experiments. In this project, you will see:
+MLflow groups runs into experiments. In this project, we will see:
 
 | Experiment Name | Purpose                          |
 |-----------------|----------------------------------|
@@ -115,18 +115,16 @@ Columns to Focus On
 | Params (C, max_iter)     | Explains why model performance changed |
 
 
-⸻
-
 ## 4️⃣ Neural Network Training Curves
 
 ### In nn-experiments:
-	- Click a run
-	- Open Metrics → loss
+- Click a run
+- Open Metrics → loss
 
-### What You Learn
-	- Convergence behavior
-	- Overfitting signals
-	- Training stability
+### What we Learn
+- Convergence behavior
+- Overfitting signals
+- Training stability
 
 This helps answer:
 
