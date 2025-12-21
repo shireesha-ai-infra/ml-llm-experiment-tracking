@@ -76,11 +76,12 @@ This UI is the single source of truth for all ML, LLM, and RAG experiments in th
 
 MLflow groups runs into experiments. In this project, you will see:
 
-- Experiment Name	Purpose
-- ml-experiments	Classical ML models
-- nn-experiments	Neural network training
-- llm-experiments	Prompt-based LLM runs
-- rag-experiments	RAG configuration experiments
+| Experiment Name | Purpose                          |
+|-----------------|----------------------------------|
+| ml-experiments  | Classical machine learning models |
+| nn-experiments  | Neural network training           |
+| llm-experiments | Prompt-based LLM runs             |
+| rag-experiments | RAG configuration experiments    |
 
 
 ## 2️⃣ Runs Table (Core Analysis View)
