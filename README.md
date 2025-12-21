@@ -1,4 +1,4 @@
-# ML & LLM Experiment Tracking System with MLflow
+# 🚀 Project: ML & LLM Experiment Tracking System with MLflow
 
 ## Overview
 This project demonstrates a production-style experiment tracking system for:
@@ -197,10 +197,5 @@ latency_sec	System responsiveness
 This enables system-level tradeoff analysis:
 
 Smaller chunks improve relevance but increase latency.
-
-⸻
-Artifacts	Versioned assets
-Comparison	Promotion decisions
-
 
 ⸻
